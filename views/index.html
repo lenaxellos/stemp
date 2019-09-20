@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="..\public\stylesheets\common.css" rel="stylesheet" type="text/css"/>
+		<style type="text/css">
+			section{
+				height:90%;
+				background-color:#41b4c3;}
+			section div:first-child{
+				position:relative;
+				text-align:center;
+				top:20%;										
+			}		
+			section div .first-img{
+				width: 84px;
+				cursor: pointer;
+			}
+			section div .secend-img{
+				width: 200px;
+				padding-left: 21px;
+				cursor: pointer;
+			}			
+
+			
+			section div.input-email{
+				position:absolute;
+				text-align:center;
+				width:100%;
+				top:32.5%;
+			}
+			section div.input-email div{				
+				text-align:center;				
+			}			
+			section div.input-email div p{				
+				display: inline-block;
+				width: 342px;
+				text-align: left;
+			    color: rgba(199, 223, 226, 0.9);
+				font-size: 20px;
+				padding: 9px 17px;
+			}						
+			.input-email > * {
+				vertical-align:middle;
+			}
+			.input-email > input {border: none;
+								border-radius: 5px;
+								padding: 10px 10px 10px 15px;
+								font-size: 20px;}
+			.input-email > button {
+				border: none;
+				background-color: rgba(48, 142, 154, 0.6);
+				padding: 9px 17px;
+				border-radius: 5px;
+				font-size: 20px;
+				color: #E3F0F2;
+				font-weight: 700;
+				margin-left:3px; 				
+			}
+			.input-email > button:hover{
+				background-color: rgba(48, 142, 154, 1); 
+			}
+			::-webkit-input-placeholder {
+				  color: #b3a7a7;
+				}
+				:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			  color: #b3a7a7;
+			}
+			
+			
+			section div.input-team{
+				position:relative;
+				text-align:center;
+				width:100%;			
+				top: 40%;
+			}						
+			section div.input-team button{	
+				text-align:left;
+				width:342px;
+			}
+			.input-team > button {
+				border: none;
+				background-color: rgba(48, 142, 154, 0.6);
+				padding: 9px 17px;
+				border-radius: 5px;
+				font-size: 20px;
+				color: #E3F0F2;
+				font-weight: 700;
+				margin-left:3px;
+				box-shadow: inset 1px 2px 1px 0px rgba(97, 180, 191, 0.72), 2px 2px 1px 1px #227A86;
+				-webkit-box-shadow: inset 1px 2px 1px 0px rgba(97, 180, 191, 0.72), 2px 2px 1px 1px #227A86;
+				border-top: 2.5px solid #3F8E98;
+				border-left: 2.5px solid #3F8E98;
+				border-bottom: 2px solid rgba(63, 142, 152, 0.58);
+				border-right: 2px solid rgba(63, 142, 152, 0.58); 				
+			}	
+			.input-team > button:hover{
+				background-color: rgba(48, 142, 154, 1); 
+			}
+			::-webkit-input-placeholder {
+				  color: #b3a7a7;
+				}
+				:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			  color: #b3a7a7;
+			}			
+			
+			footer{				
+				height:10%;
+				background-color:#268c9a;
+				text-align:center;
+			}
+			footer p{
+				position:relative;
+				top:45%;
+				color:#41b4c3;
+				font-size:15px;
+			}
+			section input{position:cen;}	        
+		</style>
+	</head>
+	<body>
+		<section>
+			<div>
+				<img src="..\public\images\logo_small.png" class="first-img"/>
+				<img src="..\public\images\logo_text.png" class="secend-img"/>
+			</div>
+			<div class="input-email">
+				<div><p>이메일</p></div>
+				<input type="text" placeholder="id@email.com"/>
+				<button>확인</button>			
+			</div>
+			<div class="input-team">				
+				<button>team chat</button>			
+			</div>			
+		</section>		
+		<footer><p>Copywriter ⓒTeam Temp All Rights reserved.</p>
+		</footer>
+	</body>
+</html>	

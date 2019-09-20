@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>S'Temp</title>
+		<link href="../public/stylesheets/common.css" rel="stylesheet" type="text/css"/>
+		<link href="../public/icons/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet"/>
+		<style type="text/css">
+			header								{width:100%; height:50px; background-color:#41b4c3;}
+			nav									{position:absolute; display:inline-block; width:270px; height:calc(100% - 50px); background-color:#268c9a;}
+			aside								{position:absolute; right:0; width:360px; height:calc(100% - 50px); background-color:#268c9a;}
+
+			.logo-area							{display:inline-block; padding-right:15px; margin-left:15px; line-height:50px; cursor:pointer;}
+			.logo-area .logo-icon				{padding-right:10px; height:40px; vertical-align:middle;}
+			.logo-area .logo-txt				{height:25px; vertical-align:middle;}
+
+			.profile-area						{float:right; line-height:50px;}
+			.profile-area > div					{display:inline-block; line-height:50px; cursor:pointer;}
+			.profile-area > div .user-name		{display:inline-block; padding-left:2px; height:100%; vertical-align:middle; font-size:1.5em; color:#ffffff;}
+			.profile-area > div .profile		{height:35px; vertical-align:middle; border-radius:50px;}
+			.profile-area > div .menu-dot		{margin:0 15px 0 8px; width:25px;}
+
+			nav > *								{color:rgba(199, 223, 226, 0.9); cursor:pointer;}
+			nav .team-title						{padding:20px 15px 10px;}
+			nav .team-title span				{font-size:20px; color:#ffffff;}
+			nav .team-title div					{display:inline-block; float:right;}
+			nav .team-title div button			{height:23px; border:none; color:rgba(199, 223, 226, 0.9); background:none; cursor:pointer;}
+
+			nav .chat-list *					{font-size:16px;}
+			nav .chat-list ul ul li				{padding:5px 0 5px 40px;}
+			nav .chat-list ul ul li:hover		{background-color:rgba(25, 85, 95, 0.7);}
+			nav .chat-list ul ul li:last-child 	{color:rgba(220, 237, 239, 0.3);}
+			nav .chat-list ul ul li i			{margin-right:5px;}
+			nav .chat-list > ul div				{padding:10px 0 10px 15px;}
+			nav .chat-list > ul div:hover		{color:#ffffff;}
+
+			aside .tab-menu						{width:100%;}
+			aside .tab-menu span				{display:inline-block; float:left; width:25%; height:40px; box-sizing:border-box; border:1px solid #268c9a; line-height:44px; text-align:center;}
+			aside .tab-menu span:not(.active)	{background-color:#41b4c3;}
+			aside .tab-menu span i				{color:rgba(199, 223, 226, 0.9); font-size:22px;}
+
+			.hidden 							{display:none;}
+
+			/* modal */
+			.modal								{position:fixed; top:0; left:0; padding-top:100px; width:100%; height:100%; overflow:auto; z-index:1; background-color:rgba(0, 0, 0, 0.6);}
+			.modal-content						{margin:0 auto; width:700px; background-color:#E3F0F2; border-radius:10px;}
+			/* ----개인 정보 설정 */
+			#my-modal-content					{height:700px;}
+			/* ----팀 설정 */
+			#team-modal-content					{height:400px;}
+			/* ---- 팀 멤버 초대 */
+			#member-invite-modal-content		{height:700px;}
+
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="logo-area">
+				<img src="../public/images/logo_small.png" class="logo-icon" alt="logo"/>
+				<img src="../public/images/logo_text.png" class="logo-txt" alt="title"/>
+			</div>
+			<div class="profile-area">
+				<div class="profile-inside-area">
+					<img src="../public/images/profile_yj.jpg" class="profile" alt="profile"/>
+					<span class="user-name">오윤주</span>
+				</div>
+				<div class="menu-dot-area">
+					<img src="../public/images/menu_dot.png" class="menu-dot" alt="menu"/>
+				</div>
+			</div>
+		</header>
+		<nav>
+			<div class="team-title">
+				<span>Temp Team</span>
+				<div>
+					<button type="button" class="member-invite-btn"><i class="fas fa-user-plus"></i></button>
+					<button type="button" class="team-setting-btn"><i class="fas fa-cog"></i></button>
+				</div>
+			</div>
+			<div class="chat-list">
+				<ul>
+					<li>
+						<div>
+							<span>공식 대화목록</span>
+							<i class="fas fa-caret-down"></i>
+						</div>
+						<ul>
+							<li>개발1팀</li>
+							<li>개발2팀</li>
+							<li>디자인팀</li>
+							<li>기획팀</li>
+							<li>컨텐츠팀</li>
+							<li>인사관리팀</li>
+							<li><i class="fas fa-plus"></i>대화 추가하기</li>
+						</ul>
+					</li>
+					<li>
+						<div>
+							<span>비공식 대화목록</span>
+							<i class="fas fa-caret-down"></i>
+						</div>
+						<ul>
+							<li>김가필드</li>
+							<li>박와조스키</li>
+							<li>안보헤미안</li>
+							<li>놈팽이팸</li>
+							<li><i class="fas fa-plus"></i>대화 추가하기</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<aside class="hidden">
+			<div class="tab-menu">
+				<span class="active" onclick="addActive(this)"><i class="fas fa-clipboard-check"></i></span>
+				<span onclick="addActive(this)"><i class="fas fa-paperclip"></i></span>
+				<span onclick="addActive(this)"><i class="fas fa-at"></i></span>
+				<span onclick="addActive(this)"><i class="fas fa-star"></i></span>
+			</div>
+		</aside>
+
+		<!-- 개인 정보 설정 modal -->
+		<div id="my-modal" class="modal hidden">
+			<div id="my-modal-content" class="modal-content">
+			</div>
+		</div>
+
+		<!-- 팀 설정 modal -->
+		<div id="team-modal" class="modal hidden">
+			<div id="team-modal-content" class="modal-content">
+			</div>
+		</div>
+
+		<!-- 팀 멤버 초대 modal -->
+		<div id="member-invite-modal" class="modal hidden">
+			<div id="member-invite-modal-content" class="modal-content">
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+			const menuBtn      = document.getElementsByClassName("menu-dot-area")[0];
+			const menuCloseBtn = document.getElementsByClassName("menu-close-btn")[0];
+			const aside        = document.getElementsByTagName("aside")[0];
+			const tabMenu	   = document.getElementsByClassName("tab-menu")[0];
+			const tabMenuSpan  = tabMenu.getElementsByTagName("span");
+
+			const profile = document.getElementsByClassName("profile-inside-area")[0];
+			const myModal = document.getElementById("my-modal");
+
+			const teamBtn   = document.getElementsByClassName("team-setting-btn")[0];
+			const teamModal = document.getElementById("team-modal");
+
+			const inviteBtn   = document.getElementsByClassName("member-invite-btn")[0];
+			const inviteModal = document.getElementById("member-invite-modal");
+
+			// 오른쪽 사이드메뉴 보이기/감추기
+			menuBtn.onclick = function() {
+				if(aside.classList.contains("hidden")) {
+					aside.classList.remove("hidden");
+					menuCloseBtn.classList.remove("hidden");
+				} else {
+					aside.classList.add("hidden");
+				};
+			};
+
+			// 오른쪽 사이드메뉴 탭 클릭했을 때
+			function addActive(element) {
+				tabMenu.getElementsByClassName("active")[0].classList.remove("active");
+				element.classList.add("active");
+			};
+
+			// 개인 정보 설정 모달 보이기
+			profile.onclick = function() {
+				myModal.classList.remove("hidden");
+			};
+
+			// 팀 설정 모달 보이기
+			teamBtn.onclick = function() {
+				teamModal.classList.remove("hidden");
+			};
+
+			// 팀 멤버 초대 모달 보이기
+			inviteBtn.onclick = function() {
+				inviteModal.classList.remove("hidden");
+			};
+
+			// 모달 감추기
+			window.onclick = function(e) {
+				if (e.target === myModal) {
+					myModal.classList.add("hidden");
+				} else if (e.target === teamModal) {
+					teamModal.classList.add("hidden");
+				} else if(e.target === inviteModal) {
+					inviteModal.classList.add("hidden");
+				};
+			};
+
+		</script>
+	</body>
+</html>
